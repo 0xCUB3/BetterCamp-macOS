@@ -1,6 +1,7 @@
 import os
 from time import sleep
-import osascript
+
+import iso_validator
 
 # 1) Welcome message
 # 2) Ask for type of installation (only supports USB for now)
@@ -10,6 +11,7 @@ import osascript
 
 # Variables
 macModel = os.popen('sysctl hw.model').read().split(':')[1].strip()
+
 
 def welcome_menu():
     while True:
@@ -38,6 +40,7 @@ If you wish to install to a different model, please select the "Change Model" op
         else:
             continue
 
+
 def select_type():
     while True:
         os.system('clear')
@@ -61,6 +64,37 @@ def select_type():
         else:
             continue
 
+
+def select_iso():
+    while True:
+        os.system('clear')
+        print('''
+############################
+# Select/Download ISO #
+############################
+
+1. Select ISO
+2. Download ISO
+3. Exit
+        ''')
+        x = input("Please select an option: ")
+        if x == '1':
+            while True:
+                os.system('clear')
+                print("Please drag-and-drop the Windows ISO onto the window:")
+                iso = input()
+                iso_validator.validate_iso(iso)
+        elif x == '2':
+            print("Sorry, this feature is not yet available.")
+            sleep(3)
+        elif x == '3':
+            exit()
+        else:
+            continue
+
+
+
 # Run functions
 welcome_menu()
 select_type()
+select_iso()
