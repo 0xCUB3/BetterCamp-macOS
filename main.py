@@ -1,4 +1,5 @@
 import os
+from time import sleep
 import osascript
 
 # 1) Welcome message
@@ -10,9 +11,10 @@ import osascript
 # Variables
 macModel = os.popen('sysctl hw.model').read().split(':')[1].strip()
 
-while True:
-    os.system('clear')
-    print('''
+def welcome_menu():
+    while True:
+        os.system('clear')
+        print('''
 ##########################
 # Welcome to BetterCamp! #
 ##########################
@@ -25,13 +27,40 @@ If you wish to install to a different model, please select the "Change Model" op
 1. Start Process
 2. Change Model
 3. Exit
-    ''')
-    x = input("Please select an option: ")
-    if x == '1':
-        break
-    elif x == '2':
-        break
-    elif x == '3':
-        exit()
-    else:
-        continue
+        ''')
+        x = input("Please select an option: ")
+        if x == '1':
+            break
+        elif x == '2':
+            break
+        elif x == '3':
+            exit()
+        else:
+            continue
+
+def select_type():
+    while True:
+        os.system('clear')
+        print('''
+############################
+# Select Installation Type #
+############################
+
+1. USB Installer
+2. Install to Hard Drive
+3. Exit
+        ''')
+        x = input("Please select an option: ")
+        if x == '1':
+            break
+        elif x == '2':
+            print("Sorry, this feature is not yet available.")
+            sleep(3)
+        elif x == '3':
+            exit()
+        else:
+            continue
+
+# Run functions
+welcome_menu()
+select_type()
