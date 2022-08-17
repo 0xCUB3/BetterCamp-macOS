@@ -13,27 +13,31 @@ import iso
 
 def welcome_menu():
     while True:
-        os.system('clear')
-        print('''
+        os.system("clear")
+        print(
+            """
 ##########################
 # Welcome to BetterCamp! #
 ##########################
 
 This script will help you create a USB installer for Windows 7/8/8.1/10/11 and will prepare you with the necessary patches for your device.
 
-Your current model: ''' + globals.macModel + '''
+Your current model: """
+            + globals.macModel
+            + """
 If you wish to install to a different model, please select the "Change Model" option in the menu.
 
 1. Start Process
 2. Change Model
 3. Exit
-        ''')
+        """
+        )
         x = input("Please select an option: ")
-        if x == '1':
+        if x == "1":
             break
-        elif x == '2':
+        elif x == "2":
             break
-        elif x == '3':
+        elif x == "3":
             exit()
         else:
             continue
@@ -41,8 +45,9 @@ If you wish to install to a different model, please select the "Change Model" op
 
 def select_type():
     while True:
-        os.system('clear')
-        print('''
+        os.system("clear")
+        print(
+            """
 ############################
 # Select Installation Type #
 ############################
@@ -50,14 +55,15 @@ def select_type():
 1. USB Installer
 2. Install to Hard Drive
 3. Exit
-        ''')
+        """
+        )
         x = input("Please select an option: ")
-        if x == '1':
+        if x == "1":
             break
-        elif x == '2':
+        elif x == "2":
             print("Sorry, this feature is not yet available.")
             sleep(3)
-        elif x == '3':
+        elif x == "3":
             exit()
         else:
             continue
@@ -65,8 +71,9 @@ def select_type():
 
 def select_iso():
     while True:
-        os.system('clear')
-        print('''
+        os.system("clear")
+        print(
+            """
 ############################
 # Select/Download ISO #
 ############################
@@ -74,21 +81,27 @@ def select_iso():
 1. Select ISO
 2. Download ISO
 3. Exit
-        ''')
+        """
+        )
         x = input("Please select an option: ")
-        if x == '1':
+        if x == "1":
             iso.validate_iso()
             break
-        elif x == '2':
+        elif x == "2":
             print("Sorry, this feature is not yet available.")
             sleep(3)
-        elif x == '3':
+        elif x == "3":
             exit()
         else:
             continue
 
 
-# Run functions
-welcome_menu()
-select_type()
-select_iso()
+def main():
+    # Run Other Functions
+    welcome_menu()
+    select_type()
+    select_iso()
+
+
+if __name__ == "__main__":
+    main()
