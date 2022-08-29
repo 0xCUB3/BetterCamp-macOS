@@ -22,7 +22,6 @@ def validate_iso():
         print(iso)
         if iso_validator(iso):
             sleep(3)
-            globals.selected_iso = iso
             break
 
 
@@ -37,6 +36,7 @@ def iso_validator(iso):
     print(f"Checking {volumeName} for setup.exe...")
     if glob.glob(f"{volumeName}/setup.exe"):
         print("Found setup.exe!")
+        globals.selected_iso = volumeName
         return True
     else:
         print("Invalid ISO. Please select a valid Windows ISO.")

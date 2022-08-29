@@ -132,13 +132,16 @@ def create_usb():
         exit()
     maker.make_usb_installer(globals.selected_usb, globals.selected_iso)
 
+
 def finish():
     os.system("clear")
-    print("""
+    print(
+        """
 ##########################
 # Installation Complete! #
 ##########################
-    """)
+    """
+    )
     print("\nReboot your Mac and hold the [Option] key to boot into the USB Installer!")
     sleep(3)
     exit()
