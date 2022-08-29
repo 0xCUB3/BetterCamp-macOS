@@ -3,6 +3,7 @@ from time import sleep
 
 import globals
 import iso
+import usb
 
 # 1) Welcome message
 # 2) Ask for type of installation (only supports USB for now)
@@ -74,9 +75,9 @@ def select_iso():
         os.system("clear")
         print(
             """
-############################
+#######################
 # Select/Download ISO #
-############################
+#######################
 
 1. Select ISO
 2. Download ISO
@@ -96,11 +97,34 @@ def select_iso():
             continue
 
 
+def select_usb():
+    while True:
+        os.system("clear")
+        print(
+            """
+####################
+# Select USB Drive #
+####################
+
+1. Select USB Drive
+2. Exit
+        """
+        )
+        x = input("Please select an option: ")
+        if x == "1":
+            usb.validate_usb()
+        elif x == "2":
+            exit()
+        else:
+            continue
+
+
 def main():
     # Run Other Functions
     welcome_menu()
     select_type()
     select_iso()
+    select_usb()
 
 
 if __name__ == "__main__":
