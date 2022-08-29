@@ -9,11 +9,17 @@ def validate_iso():
     while True:
         iso = (
             os.popen(
-                """osascript -e 'return (choose from list (get paragraphs of (do shell script "ls ~/Downloads/*.iso")) with prompt "Select a Windows ISO to use for your Windows installation") as string'"""
+                """osascript -e 'return (choose file of type {"iso"} with prompt "Select a Windows ISO that you wish to use for the installation") as string'"""
             )
             .read()
             .strip()
+            .split(":", 1)[-1]
+            .replace(":", "/")
         )
+        iso = f"/{iso}"
+        if iso == "/":
+            exit()
+        print(iso)
         if iso_validator(iso):
             sleep(3)
             globals.selected_iso = iso

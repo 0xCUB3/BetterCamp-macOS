@@ -4,6 +4,7 @@ from time import sleep
 import globals
 import iso
 import usb
+import maker
 
 # 1) Welcome message
 # 2) Ask for type of installation (only supports USB for now)
@@ -113,10 +114,34 @@ def select_usb():
         x = input("Please select an option: ")
         if x == "1":
             usb.validate_usb()
+            break
         elif x == "2":
             exit()
         else:
             continue
+
+
+def create_usb():
+    os.system("clear")
+    warning = os.system(
+        """osascript -e 'return (display dialog "Warning! If you continue, """
+        + globals.selected_usb
+        + """ will be erased!" buttons {"Cancel", "Continue"} default button "Continue" with icon caution)'"""
+    )
+    if warning == 256:
+        exit()
+    maker.make_usb_installer(globals.selected_usb, globals.selected_iso)
+
+def finish():
+    os.system("clear")
+    print("""
+##########################
+# Installation Complete! #
+##########################
+    """)
+    print("\nReboot your Mac and hold the [Option] key to boot into the USB Installer!")
+    sleep(3)
+    exit()
 
 
 def main():
@@ -125,6 +150,7 @@ def main():
     select_type()
     select_iso()
     select_usb()
+    create_usb()
 
 
 if __name__ == "__main__":

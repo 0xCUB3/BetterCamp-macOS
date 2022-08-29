@@ -7,28 +7,28 @@ from time import sleep
 def validate_usb():
     while True:
         os.system("clear")
+        drives = os.popen('diskutil list | grep /dev/ | grep external | cut -d " " -f1').read().strip().split("\n")
+        for i in range(len(drives)):
+            drives[i] = f"""{drives[i]} - {os.popen(f'diskutil info {drives[i]} | grep "Media Name"').read().split(":")[-1].strip()}"""
+        driveString = '{"' + '", "'.join(drives) + '"}'
         usb = (
             os.popen(
-                """osascript -e 'return (choose from list (get paragraphs of (do shell script "ls /Volumes")) with prompt "Select a USB drive that you would like to use for the Windows installer") as string'"""
+                f"""osascript -e 'return (choose from list {driveString} with prompt "Select a USB drive that you would like to use for the Windows installer") as string'"""
             )
             .read()
-            .strip()
-            .replace(" ", "\ ")
         )
+        usb = usb.split()[0].strip()
 
         if usb == "false":
-            break
-
-        if not os.path.isdir(f"/Volumes/{usb}"):
-
-            print(f"/Volumes/{usb}")
-            print(
-                "Selected USB drive not mounted. Please select a valid, mounted USB drive."
-            )
+            exit()
+        
+        if os.system("diskutil info " + usb + " | grep 'Disk Size' | sed -E 's/Bytes.*//' | awk '{print $NF}' | cut -c 2-"):
+            print("Invalid USB. Please select a valid USB drive.")
             sleep(3)
             continue
 
-        globals.selected_usb = f"/Volumes/{usb}"
+        globals.selected_usb = usb
 
-        print("Selected USB drive is valid!")
+        print("Selected USB drive!")
         sleep(3)
+        break
