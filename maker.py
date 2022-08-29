@@ -36,8 +36,7 @@ def make_usb_installer(usb, iso):
 
 # Formats USB drive
 def format_usb(usb) -> None:
-    print("Formatting USB drive...")
-    os.system(f"diskutil eraseDisk MS-DOS GPT BETTERCAMP {usb}")
+    os.system(f"diskutil eraseDisk MS-DOS BETTERCAMP GPT {usb}")
     print("USB drive formatted!")
     sleep(3)
 
