@@ -30,10 +30,18 @@ jobs:
       run: |
         chmod +x build_app.command
         ./build_app.command
-    - run: cd dist; zip -r "../BetterCamp Assistant.app.zip" "BetterCamp Assistant.app"
+    - name: Compress .app File
+      run: cd dist; zip -r "../BetterCamp Assistant.app.zip" "BetterCamp Assistant.app"
+    - name: Compress Raw Binary
+      run: cd dist; zip -r "../BetterCamp Assistant.zip" "BetterCamp Assistant"
     - name: Upload App as ZIP
       uses: actions/upload-artifact@v3
       with:
         name: BetterCamp Assistant.app
         path: BetterCamp Assistant.app.zip
+    - name: Upload Binary as ZIP
+      uses: actions/upload-artifact@v3
+      with:
+        name: BetterCamp Assistant (Raw Binary)
+        path: BetterCamp Assistant.zip
 
