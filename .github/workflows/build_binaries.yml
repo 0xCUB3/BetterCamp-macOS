@@ -30,3 +30,10 @@ jobs:
       run: |
         chmod +x build_app.command
         ./build_app.command
+      run: cd dist; zip -r ../BetterCamp\ Assistant.app.zip BetterCamp\ Assistant.app
+    - name: Upload App as ZIP
+      uses: actions/upload-artifact@v3
+      with:
+        name: OpenCore-Patcher-TUI.app
+        path: OpenCore-Patcher-TUI.app.zip
+
