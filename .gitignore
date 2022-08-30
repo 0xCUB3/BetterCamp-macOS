@@ -2,3 +2,4 @@ __pycache__
 globals.pyc
 dist/
 build/
+.DS_Store

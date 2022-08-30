@@ -1,5 +1,4 @@
 import os
-import subprocess
 from time import sleep
 
 from src import global_vars, iso_picker, usb_picker, usb_maker
