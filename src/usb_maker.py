@@ -1,4 +1,4 @@
-import globals
+from src import global_vars
 import os
 from time import sleep
 
@@ -74,7 +74,7 @@ def check_for_rsync() -> None:
 
 # Checks if wimlib splitting is needed
 def check_wim_size() -> bool:
-    if os.path.getsize(f"{globals.selected_iso}/sources/install.wim") >= 4294967295:
+    if os.path.getsize(f"{global_vars.selected_iso}/sources/install.wim") >= 4294967295:
         return True
     return False
 

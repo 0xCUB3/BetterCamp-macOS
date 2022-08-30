@@ -1,4 +1,4 @@
-import globals
+from src import global_vars
 import os
 from time import sleep
 
@@ -36,7 +36,7 @@ def validate_usb():
             sleep(3)
             continue
 
-        globals.selected_usb = usb
+        global_vars.selected_usb = usb
 
         print("Selected USB drive!")
         sleep(3)

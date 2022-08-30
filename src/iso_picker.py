@@ -1,7 +1,6 @@
 import glob
-import globals
+from src import global_vars
 import os
-from pathlib import Path
 from time import sleep
 
 
@@ -40,7 +39,7 @@ def iso_validator(iso):
     print(f"Checking {volumeName} for setup.exe...")
     if glob.glob(f"{volumeName}/setup.exe"):
         print("Found setup.exe!")
-        globals.selected_iso = volumeName
+        global_vars.selected_iso = volumeName
         return True
     else:
         print("Invalid ISO. Please select a valid Windows ISO.")
