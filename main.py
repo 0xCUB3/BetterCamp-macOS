@@ -154,6 +154,7 @@ def main():
     select_iso()
     select_usb()
     create_usb()
+    finish()
 
 
 if __name__ == "__main__":

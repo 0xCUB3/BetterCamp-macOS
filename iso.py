@@ -27,7 +27,11 @@ def validate_iso():
 
 def iso_validator(iso):
     try:
-        volumeName = os.popen(f"hdiutil mount {iso}").read().split()[-1]
+        output = os.popen(f"hdiutil mount {iso}").read().split()
+        for i in output:
+            if "/Volumes/" in i:
+                volumeName = i
+                break
     except:
         print("Invalid ISO. Please select a valid Windows ISO.")
         sleep(3)

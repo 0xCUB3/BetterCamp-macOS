@@ -29,13 +29,11 @@ def make_usb_installer(usb, iso):
         os.system(f"rsync -avh --progress {iso}/* /Volumes/BETTERCAMP/")
     print("Done!")
     sleep(3)
-    print("Exiting...")
-    sleep(3)
-    exit()
 
 
 # Formats USB drive
 def format_usb(usb) -> None:
+    print("Formatting USB drive...")
     os.system(f"diskutil eraseDisk MS-DOS BETTERCAMP GPT {usb}")
     print("USB drive formatted!")
     sleep(3)
@@ -43,7 +41,7 @@ def format_usb(usb) -> None:
 
 # Checks for Homebrew and installs it if it is not found.
 def check_for_homebrew() -> None:
-    if "not found" not in os.popen("which brew").read():
+    if "brew" in os.popen("which brew").read():
         print("Homebrew already installed!")
     else:
         print(
@@ -63,7 +61,7 @@ def check_for_homebrew() -> None:
 
 # Checks for rsync and installs it if it is not found.
 def check_for_rsync() -> None:
-    if "not found" not in os.popen("which rsync").read():
+    if "rsync" in os.popen("which rsync").read():
         print("rsync already installed!")
     else:
         print("rsync not found. Installing...")
@@ -85,7 +83,7 @@ def check_wim_size() -> bool:
 
 # Checks for wimlib and installs it if it is not found.
 def check_for_wimlib() -> None:
-    if "not found" not in os.popen("which wimlib-imagex").read():
+    if "wimlib" in os.popen("which wimlib-imagex").read():
         print("wimlib already installed!")
     else:
         print("wimlib not found. Installing...")

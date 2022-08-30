@@ -26,8 +26,11 @@ def validate_usb():
         if usb == "false":
             exit()
 
-        usbSize = os.popen("diskutil info " + usb + " | grep 'Disk Size' | sed -E 's/Bytes.*//' | awk '{print $NF}' | cut -c 2-").read().strip()
-        if int(usbSize) < 7000000000:
+        if float(
+            os.popen("diskutil info " + usb + " | grep 'Disk Size' | awk '{print $3}'")
+            .read()
+            .strip()
+        ) < float(7.5):
             print(
                 "USB drive too small. Please select a USB drive that is at least 8GB in size."
             )
