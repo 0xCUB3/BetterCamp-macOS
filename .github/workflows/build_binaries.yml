@@ -34,6 +34,6 @@ jobs:
     - name: Upload App as ZIP
       uses: actions/upload-artifact@v3
       with:
-        name: OpenCore-Patcher-TUI.app
-        path: OpenCore-Patcher-TUI.app.zip
+        name: BetterCamp\ Assistant.app
+        path: BetterCamp\ Assistant.app.zip
 
