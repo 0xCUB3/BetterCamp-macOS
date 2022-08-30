@@ -1,6 +1,5 @@
 import globals
 import os
-from pathlib import Path
 from time import sleep
 
 

@@ -1,9 +1,4 @@
 import os
-from subprocess import run
-
-# Global Scripts
-def exec_applescript(script) -> None:
-    p = run(['osascript', '-e', script])
 
 
 # Global Variables
