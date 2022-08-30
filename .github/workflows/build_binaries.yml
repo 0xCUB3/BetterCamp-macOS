@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install os time glob
+        pip install time glob
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Compile binaries
       run: |
