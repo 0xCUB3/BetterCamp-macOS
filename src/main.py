@@ -1,4 +1,5 @@
 import os
+import sys
 from time import sleep
 
 from src import global_vars, iso_picker, usb_picker, usb_maker
@@ -41,7 +42,7 @@ If you wish to install to a different model, please select the "Change Model" op
             elif x == "2":
                 break
             elif x == "3":
-                exit()
+                sys.exit()
             else:
                 continue
 
@@ -66,7 +67,7 @@ If you wish to install to a different model, please select the "Change Model" op
                 print("Sorry, this feature is not yet available.")
                 sleep(3)
             elif x == "3":
-                exit()
+                sys.exit()
             else:
                 continue
 
@@ -92,7 +93,7 @@ If you wish to install to a different model, please select the "Change Model" op
                 print("Sorry, this feature is not yet available.")
                 sleep(3)
             elif x == "3":
-                exit()
+                sys.exit()
             else:
                 continue
 
@@ -114,7 +115,7 @@ If you wish to install to a different model, please select the "Change Model" op
                 usb_picker.validate_usb()
                 break
             elif x == "2":
-                exit()
+                sys.exit()
             else:
                 continue
 
@@ -126,7 +127,7 @@ If you wish to install to a different model, please select the "Change Model" op
             + """ will be erased!" buttons {"Cancel", "Continue"} default button "Continue" with icon caution)'"""
         )
         if warning == 256:
-            exit()
+            sys.exit()
         usb_maker.make_usb_installer(global_vars.selected_usb, global_vars.selected_iso)
 
     def finish(self):
@@ -142,7 +143,7 @@ If you wish to install to a different model, please select the "Change Model" op
             "\nReboot your Mac and hold the [Option] key to boot into the USB Installer!"
         )
         sleep(3)
-        exit()
+        sys.exit()
 
     def main(self):
         # Run Other Functions
