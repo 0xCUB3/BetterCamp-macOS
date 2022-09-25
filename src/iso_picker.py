@@ -30,16 +30,17 @@ def iso_validator(iso):
         for i in output:
             if "/Volumes/" in i:
                 volumeName = i
+                os.popen(f"hdiutil unmount {volumeName}")
                 break
     except:
         print("Invalid ISO. Please select a valid Windows ISO.")
         sleep(3)
         return False
-    print(volumeName)
-    print(f"Checking {volumeName} for setup.exe...")
+    print(iso)
+    print(f"Checking {iso} for setup.exe...")
     if glob.glob(f"{volumeName}/setup.exe"):
         print("Found setup.exe!")
-        global_vars.selected_iso = volumeName
+        global_vars.selected_iso = iso
         return True
     else:
         print("Invalid ISO. Please select a valid Windows ISO.")
