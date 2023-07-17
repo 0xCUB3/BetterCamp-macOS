@@ -40,6 +40,7 @@ If you wish to install to a different model, please select the "Change Model" op
             if x == "1":
                 break
             elif x == "2":
+                # TODO: Add model changer
                 break
             elif x == "3":
                 sys.exit()
