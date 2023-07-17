@@ -1,4 +1,5 @@
 import glob
+
 from src import global_vars
 import os
 from time import sleep
@@ -31,7 +32,7 @@ def iso_validator(iso):
             if "/Volumes/" in i:
                 volumeName = i
                 break
-    except:
+    except OSError:
         print("Invalid ISO. Please select a valid Windows ISO.")
         sleep(3)
         return False
