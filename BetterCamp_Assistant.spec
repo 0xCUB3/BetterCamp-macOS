@@ -34,7 +34,7 @@ exe = EXE(pyz,
 app = BUNDLE(exe,
          name='BetterCamp Assistant.app',
          icon="resources/Bootcamp_Assistant.icns",
-         bundle_identifier="ga.0xCUBE.bettercamp_assistant",
+         bundle_identifier="app.netlify.0xCUBE.bettercamp_assistant",
          info_plist={
              "CFBundleShortVersionString": "0.0.1",
              "CFBundleExecutable": "MacOS/Terminal",
