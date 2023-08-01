@@ -1,4 +1,4 @@
-from src import global_vars
+from src import global_vars, downloader
 import os
 from time import sleep
 
@@ -25,6 +25,13 @@ def make_usb_installer(usb, iso):
     else:
         print("Copying ISO to USB drive...")
         os.system(f"rsync -avh --progress {iso}/* /Volumes/BETTERCAMP/")
+    print("Downloading Apple's BootCamp drivers for " + global_vars.macModel)
+    if global_vars.macModel in global_vars.pre_2011:
+        downloader.download_file(global_vars.bc_pre_2011, "drivers")
+    elif global_vars.macModel in global_vars._2011_2012:
+        downloader.download_file(global_vars.bc_2011_2012, "drivers")
+    else:
+        downloader.download_file(global_vars.bc_post_2012, "drivers")
     print("Done!")
     sleep(3)
 
